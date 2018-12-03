@@ -1,0 +1,34 @@
+<idea-plugin>
+    <id>cn.mklaus.plugin.boring-work</id>
+    <name>Plugin display name here</name>
+    <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+
+    <description><![CDATA[
+    Enter short description for your plugin here.<br>
+    <em>most HTML tags may be used</em>
+    ]]></description>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
+    <!--必须依赖Velocity插件-->
+    <depends>com.intellij.velocity</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+        <applicationConfigurable dynamic="true" instance="cn.mklaus.plugin.ui.MainSetting"/>
+        <applicationService serviceImplementation="cn.mklaus.plugin.persistent.TemplateStateComponent" />
+
+        <projectService serviceInterface="cn.mklaus.plugin.service.GenerateService" serviceImplementation="cn.mklaus.plugin.service.impl.GenerateServiceImpl" />
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+        <action id="cn.mklaus.plugin.action.BoringWork" class="cn.mklaus.plugin.action.BoringWork" text="Boring Work"
+                description="klaus tool">
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="first"/>
+        </action>
+    </actions>
+</idea-plugin>
