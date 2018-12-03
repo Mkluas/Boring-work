@@ -2,7 +2,7 @@ package cn.mklaus.plugin.ui;
 
 import cn.mklaus.plugin.Template;
 import cn.mklaus.plugin.persistent.TemplateStateComponent;
-import cn.mklaus.plugin.ui.view.MainSettingView;
+import cn.mklaus.plugin.ui.view.TemplateSettingView;
 import cn.mklaus.plugin.util.Langs;
 import com.intellij.openapi.options.Configurable;
 import com.intellij.openapi.options.ConfigurationException;
@@ -18,14 +18,14 @@ import java.util.Map;
  * @author klaus
  * @date 2018/11/29 9:55 PM
  */
-public class TemplateSetting implements Configurable, MainSettingView.Delegate {
+public class TemplateSetting implements Configurable, TemplateSettingView.Delegate {
 
-    private MainSettingView mainView;
+    private TemplateSettingView mainView;
     private List<Template> templates;
 
     public TemplateSetting() {
         this.templates = Langs.cloneTemplateList(TemplateStateComponent.getInstance().getTemplateList());
-        this.mainView = new MainSettingView(this);
+        this.mainView = new TemplateSettingView(this);
     }
 
     @Nls(capitalization = Nls.Capitalization.Title)

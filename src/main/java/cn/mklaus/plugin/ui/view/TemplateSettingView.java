@@ -31,7 +31,7 @@ import java.util.stream.Collectors;
  * @author klaus
  * @date 2018/11/29 7:23 PM
  */
-public class MainSettingView extends JPanel implements ListSelectionListener, DocumentListener {
+public class TemplateSettingView extends JPanel implements ListSelectionListener, DocumentListener {
 
     private Delegate delegate;
 
@@ -46,7 +46,7 @@ public class MainSettingView extends JPanel implements ListSelectionListener, Do
     private Template selectedTemplate;
 
 
-    public MainSettingView(Delegate delegate) {
+    public TemplateSettingView(Delegate delegate) {
         this.delegate = delegate;
         initView();
         refresh();
