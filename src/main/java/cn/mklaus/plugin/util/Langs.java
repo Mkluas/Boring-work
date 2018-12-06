@@ -7,6 +7,8 @@ import com.intellij.openapi.project.ProjectManager;
 import com.intellij.openapi.ui.InputValidator;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.io.FileUtil;
+import com.intellij.psi.JavaPsiFacade;
+import com.intellij.psi.search.GlobalSearchScope;
 import com.intellij.util.ExceptionUtil;
 
 import java.io.File;
@@ -57,6 +59,10 @@ public class Langs {
        List<Template> list = new ArrayList<>();
        templates.forEach(template -> list.add(template.clone()));
        return list;
+    }
+
+    public static boolean isClassExists(String qualifiedName) {
+        return JavaPsiFacade.getInstance(currentProject()).findClass(qualifiedName, GlobalSearchScope.allScope(currentProject())) != null;
     }
 
     /**

@@ -1,0 +1,29 @@
+package ${package};
+
+import cn.mklaus.framework.bean.Save;
+import cn.mklaus.framework.bean.Update;
+import lombok.Data;
+import lombok.ToString;
+import org.hibernate.validator.constraints.NotBlank;
+
+import javax.validation.constraints.NotNull;
+
+@Data
+@ToString
+public class ${entity.name}VO {
+
+    @NotNull(groups = {Update.class}, message = "${entity.camelName}Id不能为空}")
+    private Integer ${entity.camelName}Id;
+
+    #foreach($c in $entity.columns)
+        #if(${c.type} == "String")
+        @NotBlank(groups = {Save.class, Update.class}, message = "${c.name}不能为空")
+        #else
+        @NotNull(groups = {Save.class, Update.class}, message = "${c.name}不能为空")
+        #end
+    private ${c.type} ${c.name};
+
+    #end
+}
+
+#filename("${entity.name}VO.java")

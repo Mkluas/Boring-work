@@ -18,6 +18,6 @@ public interface GenerateService {
         return ServiceManager.getService(project, GenerateService.class);
     }
 
-    void generate(List<PsiClass> classes, List<Template> templates);
+    void generate(List<PsiClass> classes, List<Template> templates, String packagePath);
 
 }

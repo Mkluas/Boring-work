@@ -1,8 +1,6 @@
 package cn.mklaus.plugin.action;
 
-import cn.mklaus.plugin.Template;
-import cn.mklaus.plugin.persistent.TemplateStateComponent;
-import cn.mklaus.plugin.service.GenerateService;
+import cn.mklaus.plugin.ui.view.GenerateOptionsDialog;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
@@ -42,8 +40,7 @@ public class BoringWork extends AnAction {
         }
 
         if (!classes.isEmpty()) {
-            List<Template> templateList = TemplateStateComponent.getInstance().getTemplateList();
-            GenerateService.getInstance(project).generate(classes, templateList);
+            new GenerateOptionsDialog(project, classes).open();
         }
 
     }

@@ -1,1 +1,24 @@
-This is a service velocity template.
+package ${package};
+
+import ${basePackage}.entity.${entity.name};
+import ${basePackage}.vo.${entity.name}VO;
+import cn.mklaus.framework.base.BaseService;
+import cn.mklaus.framework.bean.PageVO;
+import cn.mklaus.framework.bean.Pagination;
+import cn.mklaus.framework.bean.ServiceResult;
+
+public interface ${entity.name}Service extends BaseService<${entity.name}> {
+
+    Pagination list${entity.name}(PageVO pageVO);
+
+    ${entity.name} get${entity.name}(int ${entity.camelName}Id);
+
+    ServiceResult save${entity.name}(${entity.name}VO vo);
+
+    ServiceResult update${entity.name}(${entity.name}VO vo);
+
+    ServiceResult remove${entity.name}(int ${entity.camelName}Id);
+
+}
+
+#filename("${entity.name}Service.java")

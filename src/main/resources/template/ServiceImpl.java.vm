@@ -1,1 +1,59 @@
-a Service Impl.
+package ${package};
+
+import ${basePackage}.entity.${entity.name};
+import ${basePackage}.vo.${entity.name}VO;
+import ${basePackage}.service.${entity.name}Service;
+import cn.mklaus.framework.base.BaseServiceImpl;
+import cn.mklaus.framework.bean.Pagination;
+import cn.mklaus.framework.bean.PageVO;
+import cn.mklaus.framework.bean.ServiceResult;
+import org.nutz.dao.Cnd;
+
+import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
+
+@Service
+public class ${entity.name}ServiceImpl extends BaseServiceImpl<${entity.name}> implements ${entity.name}Service {
+
+    public Pagination list${entity.name}(PageVO pageVO) {
+        Cnd cnd = (Cnd) Cnd.orderBy().desc("id");
+        return listPage(cnd, pageVO.toPager());
+    }
+
+    public ${entity.name} get${entity.name}(int ${entity.camelName}Id) {
+        return fetch(${entity.camelName}Id);
+    }
+
+    public ServiceResult save${entity.name}(${entity.name}VO vo) {
+        ${entity.name} ${entity.camelName} = new ${entity.name}();
+
+        #foreach($c in $entity.columns)
+            ${entity.camelName}.set${c.capitalName}(vo.get${c.capitalName}());
+        #end
+
+        insert(${entity.camelName});
+        return ServiceResult.ok().put("${entity.camelName}", ${entity.camelName});
+    }
+
+    public ServiceResult update${entity.name}(${entity.name}VO vo) {
+        ${entity.name} ${entity.camelName} = fetch(vo.get${entity.name}Id());
+        Assert.notNull(${entity.camelName}, "${entity.camelName} 不存在");
+
+        #foreach($c in $entity.columns)
+            ${entity.camelName}.set${c.capitalName}(vo.get${c.capitalName}());
+        #end
+
+        update(${entity.camelName});
+        return ServiceResult.ok().put("${entity.camelName}", ${entity.camelName});
+    }
+
+    public ServiceResult remove${entity.name}(int ${entity.camelName}Id) {
+        ${entity.name} ${entity.camelName} = fetch(${entity.camelName}Id);
+        Assert.notNull(${entity.camelName}, "${entity.camelName} 不存在");
+        delete(${entity.camelName});
+        return ServiceResult.ok();
+    }
+
+}
+
+#filename("${entity.name}ServiceImpl.java")

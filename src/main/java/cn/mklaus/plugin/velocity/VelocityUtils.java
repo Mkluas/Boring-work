@@ -25,6 +25,7 @@ public class VelocityUtils {
 
         StringWriter stringWriter = new StringWriter();
         try {
+            template = preHandle(template);
             engine.evaluate(context, stringWriter, "VM Generate", template);
         } catch (Exception e) {
             StringBuilder builder = new StringBuilder("生成模板代码出错：\n");
@@ -35,6 +36,11 @@ public class VelocityUtils {
         }
 
         return stringWriter.toString();
+    }
+
+    private static String preHandle(String template) {
+        String macro = "#macro(filename $filename)\n $!callback.setFilename($filename) \n #end \n";
+        return macro + template;
     }
 
 }

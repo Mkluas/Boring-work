@@ -49,7 +49,7 @@ public class TemplateSetting implements Configurable, TemplateSettingView.Delega
     @Override
     public void apply() throws ConfigurationException {
         Map<String, Template> maps = new HashMap<>(templates.size() * 2);
-        templates.forEach(t->maps.put(t.getName(), t));
+        Langs.cloneTemplateList(templates).forEach(t->maps.put(t.getName(), t));
         TemplateStateComponent.getInstance().setTemplateMap(maps);
     }
 
@@ -66,15 +66,11 @@ public class TemplateSetting implements Configurable, TemplateSettingView.Delega
 
     @Override
     public void createTemplate(String templateName) {
-        System.out.println("templates = " + templates);
         templates.add(templates.size(), new Template(templateName));
-        System.out.println("templates = " + templates);
     }
 
     @Override
     public void removeTemplate(int selectedIndex) {
-        System.out.println("templates = " + templates);
-        System.out.println("remove " + templates.get(selectedIndex));
         templates.remove(selectedIndex);
     }
 
