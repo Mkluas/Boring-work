@@ -63,16 +63,16 @@ public class TemplateStateComponent implements PersistentStateComponent<Template
 
     static {
         Map<String, Template> map = new HashMap<>();
-        map.put("Service", loadTemplate("Service", "template/Service.java.vm", "service"));
-        map.put("ServiceImpl", loadTemplate("ServiceImpl", "template/ServiceImpl.java.vm", "service.impl"));
-        map.put("Controller", loadTemplate("Controller", "template/Controller.java.vm", "web"));
-        map.put("VO", loadTemplate("VO", "template/VO.java.vm", "vo"));
+        loadTemplate(map,"Service", "template/Service.java.vm", "service");
+        loadTemplate(map,"ServiceImpl", "template/ServiceImpl.java.vm", "service.impl");
+        loadTemplate(map,"Controller", "template/Controller.java.vm", "web");
+        loadTemplate(map,"VO", "template/VO.java.vm", "vo");
 
         DEFAULT_TEMPLATE_MAP = map;
         DEFAULT_TEMPLATE_LIST = Arrays.asList(map.keySet().toArray(new String[]{}));
     }
 
-    private static Template loadTemplate(String name, String path, String prefixDir) {
-        return new Template(name, Langs.loadContentText(path), prefixDir);
+    private static void loadTemplate(Map<String, Template> map, String name, String path, String prefixDir) {
+        map.put(name, new Template(name, Langs.loadContentText(path), prefixDir));
     }
 }
