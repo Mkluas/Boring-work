@@ -8,6 +8,10 @@ import org.hibernate.validator.constraints.NotBlank;
 
 import javax.validation.constraints.NotNull;
 
+/**
+ * @author $!author
+ * @date $!createTime
+ */
 @Data
 @ToString
 public class ${entity.name}VO {

@@ -12,18 +12,25 @@ import org.nutz.dao.Cnd;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
+/**
+ * @author $!author
+ * @date $!createTime
+ */
 @Service
 public class ${entity.name}ServiceImpl extends BaseServiceImpl<${entity.name}> implements ${entity.name}Service {
 
+    @Override
     public Pagination list${entity.name}(PageVO pageVO) {
         Cnd cnd = (Cnd) Cnd.orderBy().desc("id");
         return listPage(cnd, pageVO.toPager());
     }
 
+    @Override
     public ${entity.name} get${entity.name}(int ${entity.camelName}Id) {
         return fetch(${entity.camelName}Id);
     }
 
+    @Override
     public ServiceResult save${entity.name}(${entity.name}VO vo) {
         ${entity.name} ${entity.camelName} = new ${entity.name}();
 
@@ -35,6 +42,7 @@ public class ${entity.name}ServiceImpl extends BaseServiceImpl<${entity.name}> i
         return ServiceResult.ok().put("${entity.camelName}", ${entity.camelName});
     }
 
+    @Override
     public ServiceResult update${entity.name}(${entity.name}VO vo) {
         ${entity.name} ${entity.camelName} = fetch(vo.get${entity.name}Id());
         Assert.notNull(${entity.camelName}, "${entity.camelName} 不存在");
@@ -47,6 +55,7 @@ public class ${entity.name}ServiceImpl extends BaseServiceImpl<${entity.name}> i
         return ServiceResult.ok().put("${entity.camelName}", ${entity.camelName});
     }
 
+    @Override
     public ServiceResult remove${entity.name}(int ${entity.camelName}Id) {
         ${entity.name} ${entity.camelName} = fetch(${entity.camelName}Id);
         Assert.notNull(${entity.camelName}, "${entity.camelName} 不存在");

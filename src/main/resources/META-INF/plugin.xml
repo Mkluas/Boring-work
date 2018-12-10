@@ -1,6 +1,6 @@
 <idea-plugin>
     <id>cn.mklaus.plugin.boring-work</id>
-    <name>Plugin display name here</name>
+    <name>Boring Work</name>
     <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
 
     <description><![CDATA[
@@ -20,6 +20,7 @@
         <!-- Add your extensions here -->
         <applicationConfigurable dynamic="true" instance="cn.mklaus.plugin.ui.MainSetting"/>
         <applicationService serviceImplementation="cn.mklaus.plugin.persistent.TemplateStateComponent" />
+        <applicationService serviceImplementation="cn.mklaus.plugin.persistent.GlobalStateComponent" />
 
         <projectService serviceInterface="cn.mklaus.plugin.service.GenerateService" serviceImplementation="cn.mklaus.plugin.service.impl.GenerateServiceImpl" />
     </extensions>

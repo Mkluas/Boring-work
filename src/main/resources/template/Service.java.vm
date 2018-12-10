@@ -7,6 +7,10 @@ import cn.mklaus.framework.bean.PageVO;
 import cn.mklaus.framework.bean.Pagination;
 import cn.mklaus.framework.bean.ServiceResult;
 
+/**
+ * @author $!author
+ * @date $!createTime
+ */
 public interface ${entity.name}Service extends BaseService<${entity.name}> {
 
     Pagination list${entity.name}(PageVO pageVO);
