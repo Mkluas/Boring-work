@@ -1,0 +1,31 @@
+package ${package};
+
+import ${basePackage}.entity.${entity.name};
+import lombok.Data;
+import lombok.ToString;
+
+/**
+ * @author $!author
+ * @date $!createTime
+ */
+@Data
+@ToString
+public class ${entity.name}DTO {
+
+    private Integer id;
+
+#foreach($c in $entity.columns)
+    private ${c.type} ${c.name};
+
+#end
+
+    public ${entity.name}DTO(${entity.name} ${entity.camelName}) {
+        this.id = ${entity.camelName}.getId();
+#foreach($c in $entity.columns)
+        this.${c.name} = ${entity.camelName}.get${langs.capital($c.name)}();
+#end
+    }
+
+}
+
+#filename("${entity.name}DTO.java")

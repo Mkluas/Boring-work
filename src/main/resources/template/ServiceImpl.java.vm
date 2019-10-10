@@ -34,9 +34,9 @@ public class ${entity.name}ServiceImpl extends BaseServiceImpl<${entity.name}> i
     public ServiceResult save${entity.name}(${entity.name}VO vo) {
         ${entity.name} ${entity.camelName} = new ${entity.name}();
 
-        #foreach($c in $entity.columns)
-            ${entity.camelName}.set${c.capitalName}(vo.get${c.capitalName}());
-        #end
+#foreach($c in $entity.columns)
+        ${entity.camelName}.set${c.capitalName}(vo.get${c.capitalName}());
+#end
 
         insert(${entity.camelName});
         return ServiceResult.ok().put("${entity.camelName}", ${entity.camelName});
@@ -47,9 +47,9 @@ public class ${entity.name}ServiceImpl extends BaseServiceImpl<${entity.name}> i
         ${entity.name} ${entity.camelName} = fetch(vo.get${entity.name}Id());
         Assert.notNull(${entity.camelName}, "${entity.camelName} 不存在");
 
-        #foreach($c in $entity.columns)
-            ${entity.camelName}.set${c.capitalName}(vo.get${c.capitalName}());
-        #end
+#foreach($c in $entity.columns)
+        ${entity.camelName}.set${c.capitalName}(vo.get${c.capitalName}());
+#end
 
         update(${entity.camelName});
         return ServiceResult.ok().put("${entity.camelName}", ${entity.camelName});

@@ -2,13 +2,12 @@ package ${package};
 
 import ${basePackage}.service.${entity.name}Service;
 import ${basePackage}.vo.${entity.name}VO;
-import cn.mklaus.framework.bean.Pagination;
-import cn.mklaus.framework.bean.Response;
-import cn.mklaus.framework.bean.ServiceResult;
 import cn.mklaus.framework.bean.PageVO;
-import cn.mklaus.framework.bean.Save;
+import cn.mklaus.framework.bean.Pagination;
+import cn.mklaus.framework.bean.ServiceResult;
 import cn.mklaus.framework.bean.Update;
-import com.alibaba.fastjson.JSONObject;
+import cn.mklaus.framework.bean.Save;
+import cn.mklaus.framework.web.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -25,31 +24,33 @@ public class ${entity.name}Controller {
     private ${entity.name}Service ${entity.camelName}Service;
 
     @GetMapping("list")
-    @ResponseBody
-    public JSONObject list${entity.name}(PageVO pageVO) {
+    public Response list${entity.name}(PageVO pageVO) {
         Pagination pagination = ${entity.camelName}Service.list${entity.name}(pageVO);
-        return Response.ok().put("pager", pagination).build();
+        return Response.ok().put("pager", pagination);
+    }
+
+    @GetMapping("get")
+    public Response get${entity.name}(@RequestParam Integer ${entity.camelName}Id) {
+        ${entity.name} ${entity.camelName} = ${entity.camelName}Service.get${entity.name}(${entity.camelName}Id);
+        return Response.ok().put("${entity.camelName}", ${entity.camelName});
     }
 
     @PostMapping("save")
-    @ResponseBody
-    public JSONObject save${entity.name}(@Validated(Save.class) ${entity.name}VO vo) {
+    public Response save${entity.name}(@Validated(Save.class) ${entity.name}VO vo) {
         ServiceResult result = ${entity.camelName}Service.save${entity.name}(vo);
-        return Response.withResult(result).build();
+        return Response.with(result);
     }
 
     @PostMapping("update")
-    @ResponseBody
-    public JSONObject update${entity.name}(@Validated(Update.class) ${entity.name}VO vo) {
+    public Response update${entity.name}(@Validated(Update.class) ${entity.name}VO vo) {
         ServiceResult result = ${entity.camelName}Service.update${entity.name}(vo);
-        return Response.withResult(result).build();
+        return Response.with(result);
     }
 
     @PostMapping("remove")
-    @ResponseBody
-    public JSONObject remove${entity.name}(@RequestParam Integer ${entity.camelName}Id) {
+    public Response remove${entity.name}(@RequestParam Integer ${entity.camelName}Id) {
         ServiceResult result = ${entity.camelName}Service.remove${entity.name}(${entity.camelName}Id);
-        return Response.withResult(result).build();
+        return Response.with(result);
     }
 
 

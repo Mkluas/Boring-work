@@ -67,6 +67,7 @@ public class TemplateStateComponent implements PersistentStateComponent<Template
         loadTemplate(map,"ServiceImpl", "template/ServiceImpl.java.vm", "service.impl");
         loadTemplate(map,"Controller", "template/Controller.java.vm", "web");
         loadTemplate(map,"VO", "template/VO.java.vm", "vo");
+        loadTemplate(map, "DTO", "template/DTO.java.vm", "dto");
 
         DEFAULT_TEMPLATE_MAP = map;
         DEFAULT_TEMPLATE_LIST = Arrays.asList(map.keySet().toArray(new String[]{}));

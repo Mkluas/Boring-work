@@ -33,7 +33,7 @@ dependencies {
 
 intellij {
     pluginName 'BoringWork'
-    version '2018.2.2'
+    version '2019.1.2'
     type 'IU'
     plugins = ['Velocity']
 //    updateSinceUntilBuild false

@@ -1,18 +1,21 @@
 <idea-plugin>
     <id>cn.mklaus.plugin.boring-work</id>
     <name>Boring Work</name>
-    <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+    <vendor email="xie.jinye@163.com" url="mklaus.cn">KlausXie</vendor>
 
-    <description><![CDATA[
-    Enter short description for your plugin here.<br>
-    <em>most HTML tags may be used</em>
-    ]]></description>
+    <change-notes><![CDATA[
+        boring-work, It's can generate multiple files by template you create.
+        like dao, service, controller file which have more common code block.
+    ]]></change-notes>
+
+    <description>Enter short description for your plugin here</description>
 
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
          on how to target different products -->
     <!-- uncomment to enable plugin in all products
     <depends>com.intellij.modules.lang</depends>
     -->
+
     <!--必须依赖Velocity插件-->
     <depends>com.intellij.velocity</depends>
 
@@ -27,7 +30,10 @@
 
     <actions>
         <!-- Add your actions here -->
-        <action id="cn.mklaus.plugin.action.BoringWork" class="cn.mklaus.plugin.action.BoringWork" text="Boring Work"
+        <action id="cn.mklaus.plugin.action.BoringWork"
+                class="cn.mklaus.plugin.action.BoringWork"
+                text="Boring Work"
+                keymap="command m"
                 description="klaus tool">
             <add-to-group group-id="ProjectViewPopupMenu" anchor="first"/>
         </action>

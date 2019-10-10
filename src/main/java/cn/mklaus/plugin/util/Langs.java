@@ -23,6 +23,14 @@ import java.util.List;
  */
 public class Langs {
 
+    public static String capital(String name) {
+        if (isBlankString(name)) {
+            return "";
+        } else {
+            return name.substring(0,1).toUpperCase() + name.substring(1);
+        }
+    }
+
     public static Project currentProject() {
         ProjectManager projectManager = ProjectManager.getInstance();
         Project[] openProjects = projectManager.getOpenProjects();

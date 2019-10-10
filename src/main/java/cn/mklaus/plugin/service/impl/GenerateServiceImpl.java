@@ -45,6 +45,7 @@ public class GenerateServiceImpl implements GenerateService {
         map.put("callback", callback);
         map.put("basePackage", packagePath);
         map.put("package", packagePath + "." + template.getPrefixDir());
+        map.put("langs", new Langs());
 
         putGlobalVariable(map);
 
