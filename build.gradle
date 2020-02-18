@@ -33,9 +33,9 @@ dependencies {
 
 intellij {
     pluginName 'BoringWork'
-    version '2019.1.2'
+    version '2019.3.2'
     type 'IU'
-    plugins = ['Velocity']
+    plugins = ['java', 'Velocity']
 //    updateSinceUntilBuild false
     sandboxDirectory = "$project.buildDir/myCustom-sandbox"
 }

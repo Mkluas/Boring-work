@@ -17,6 +17,7 @@
     -->
 
     <!--必须依赖Velocity插件-->
+    <depends>com.intellij.modules.java</depends>
     <depends>com.intellij.velocity</depends>
 
     <extensions defaultExtensionNs="com.intellij">
@@ -33,7 +34,6 @@
         <action id="cn.mklaus.plugin.action.BoringWork"
                 class="cn.mklaus.plugin.action.BoringWork"
                 text="Boring Work"
-                keymap="command m"
                 description="klaus tool">
             <add-to-group group-id="ProjectViewPopupMenu" anchor="first"/>
         </action>
